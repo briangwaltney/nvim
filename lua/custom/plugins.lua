@@ -79,6 +79,37 @@ local plugins = {
 		end,
 	},
 	{
+		"m4xshen/hardtime.nvim",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		config = function()
+			require("hardtime").setup({
+				disable_mouse = false,
+				disabled_keys = {
+					["<Up>"] = {},
+					["<Down>"] = {},
+					["<Left>"] = {},
+					["<Right>"] = {},
+				},
+				restricted_keys = {
+					["w"] = { "n", "x" },
+					["b"] = { "n", "x" },
+					["h"] = { "n", "x" },
+					["j"] = { "n", "x" },
+					["k"] = { "n", "x" },
+					["l"] = { "n", "x" },
+				},
+			})
+		end,
+		event = "BufEnter",
+	},
+	{
+		"ggandor/leap.nvim",
+		lazy = false,
+		config = function()
+			require("leap").add_default_mappings()
+		end,
+	},
+	{
 		"github/copilot.vim",
 		lazy = false,
 	},
@@ -102,9 +133,6 @@ local plugins = {
 				}),
 			},
 		},
-	},
-	{
-		"ThePrimeagen/harpoon",
 	},
 }
 

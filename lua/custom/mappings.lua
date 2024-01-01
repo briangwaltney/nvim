@@ -5,19 +5,25 @@ M.disabled = {
 	n = {
 		-- Disable
 		["<leader>n"] = { "" },
-		["<Tab>"] = { "" },
+		["<tab>"] = { "" },
+		["<S-tab>"] = { "" },
 	},
 }
 -- test
 M.general = {
+	x = {
+		["Q"] = { ":norm @q<CR>", "run macro q across all selected lines" },
+	},
 	n = {
-
+		["Q"] = { "@qj", "run macro q" },
 		["<C-q>"] = {
 			function(bufnr)
 				require("telescope.actions").smart_send_to_qflist(bufnr)
 				require("telescope.builtin").quickfix()
 			end,
+			"Send to quickfix",
 		},
+		["<leader>q"] = { "<cmd>q<CR>", "close buffer" },
 		["<leader><leader>s"] = { "<cmd>source ~/.config/nvim/lua/custom/snippets.lua<CR>" },
 		["<leader><leader>l"] = { "<cmd>LspRestart<CR>" },
 		["<leader>F"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
@@ -29,6 +35,13 @@ M.general = {
 		["<leader>vs"] = {
 			"<cmd> vsplit <CR>",
 			"vertical split",
+		},
+
+		["F"] = {
+			function()
+				vim.diagnostic.open_float({ border = "rounded" })
+			end,
+			"LSP hover",
 		},
 
 		["<c-Y>"] = {
@@ -70,50 +83,6 @@ M.general = {
 		["<leader>ch"] = { "<cmd> Telescope keymaps <CR>", "Keymap search" },
 
 		["<leader>co"] = { "<cmd> Copilot open <CR>" },
-
-		-- Harpoon
-		["<leader>9"] = {
-			function()
-				require("harpoon.mark").add_file()
-			end,
-			"add harpoon",
-		},
-		["<leader>0"] = {
-			function()
-				require("harpoon.ui").toggle_quick_menu()
-			end,
-			"harpoon menu",
-		},
-		["<leader>1"] = {
-			function()
-				require("harpoon.ui").nav_file(1)
-			end,
-			"harpoon file 1",
-		},
-		["<leader>2"] = {
-			function()
-				require("harpoon.ui").nav_file(2)
-			end,
-			"harpoon file 2",
-		},
-		["<leader>3"] = {
-			function()
-				require("harpoon.ui").nav_file(3)
-			end,
-			"harpoon file 3",
-		},
-		["<leader>4"] = {
-			function()
-				require("harpoon.ui").nav_file(4)
-			end,
-			"harpoon file 4",
-		},
-		["<leader>5"] = {
-			function()
-				require("harpoon.ui").nav_file(5)
-			end,
-			"harpoon file 5",
-		},
 	},
 	v = {
 		["gc"] = {

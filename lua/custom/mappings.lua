@@ -15,6 +15,7 @@ M.general = {
 		["Q"] = { ":norm @q<CR>", "run macro q across all selected lines" },
 	},
 	n = {
+		["<leader>t"] = { "<cmd> TroubleToggle<CR>", "trouble" },
 		["Q"] = { "@qj", "run macro q" },
 		["<C-q>"] = {
 			function(bufnr)

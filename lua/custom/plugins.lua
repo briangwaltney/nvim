@@ -2,10 +2,7 @@ local overrides = require("custom.configs.overrides")
 
 ---@type NvPluginSpec[]
 local plugins = {
-	{
-		"sbdchd/neoformat",
-		lazy = false,
-	},
+	{ "sbdchd/neoformat", lazy = false },
 
 	-- Override plugin definition options
 	{
@@ -35,42 +32,18 @@ local plugins = {
 			require("custom.configs.lspconfig")
 		end, -- Override to setup mason-lspconfig
 	},
-	{
-		"nvim-treesitter/nvim-treesitter-context",
-		lazy = false,
-	},
+	{ "nvim-treesitter/nvim-treesitter-context", lazy = false },
 
 	-- override plugin configs
-	{
-		"williamboman/mason.nvim",
-		opts = overrides.mason,
-	},
-	{
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		lazy = false,
-	},
-	{
-		"numToStr/Comment.nvim",
-	},
+	{ "williamboman/mason.nvim", opts = overrides.mason },
+	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = false },
+	{ "numToStr/Comment.nvim" },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = overrides.treesitter,
-		dependencies = {
-			"JoosepAlviste/nvim-ts-context-commentstring",
-		},
+		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 	},
-
-	{
-		"nvim-tree/nvim-tree.lua",
-		opts = overrides.nvimtree,
-	},
-
-	{
-		"L3MON4D3/LuaSnip",
-		config = function()
-			require("custom.snippets")
-		end,
-	},
+	{ "nvim-tree/nvim-tree.lua", opts = overrides.nvimtree },
 	{
 		"max397574/better-escape.nvim",
 		event = "InsertEnter",
@@ -109,10 +82,7 @@ local plugins = {
 			require("leap").add_default_mappings()
 		end,
 	},
-	{
-		"github/copilot.vim",
-		lazy = false,
-	},
+	{ "github/copilot.vim", lazy = false },
 	{
 		"hrsh7th/nvim-cmp",
 		opts = {
@@ -134,6 +104,7 @@ local plugins = {
 			},
 		},
 	},
+	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, lazy = false },
 }
 
 return plugins

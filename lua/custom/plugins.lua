@@ -3,6 +3,7 @@ local overrides = require("custom.configs.overrides")
 ---@type NvPluginSpec[]
 local plugins = {
 	{ "sbdchd/neoformat", lazy = false },
+	{ "TamaMcGlinn/quickfixdd", lazy = false },
 
 	-- Override plugin definition options
 	{
@@ -14,6 +15,10 @@ local plugins = {
 				names = false,
 			},
 		},
+	},
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		lazy = false,
 	},
 
 	{
@@ -51,30 +56,30 @@ local plugins = {
 			require("better_escape").setup()
 		end,
 	},
-	{
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		config = function()
-			require("hardtime").setup({
-				disable_mouse = false,
-				disabled_keys = {
-					["<Up>"] = {},
-					["<Down>"] = {},
-					["<Left>"] = {},
-					["<Right>"] = {},
-				},
-				restricted_keys = {
-					["w"] = { "n", "x" },
-					["b"] = { "n", "x" },
-					["h"] = { "n", "x" },
-					["j"] = { "n", "x" },
-					["k"] = { "n", "x" },
-					["l"] = { "n", "x" },
-				},
-			})
-		end,
-		event = "BufEnter",
-	},
+	-- {
+	-- 	"m4xshen/hardtime.nvim",
+	-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	-- 	config = function()
+	-- 		require("hardtime").setup({
+	-- 			disable_mouse = false,
+	-- 			disabled_keys = {
+	-- 				["<Up>"] = {},
+	-- 				["<Down>"] = {},
+	-- 				["<Left>"] = {},
+	-- 				["<Right>"] = {},
+	-- 			},
+	-- 			restricted_keys = {
+	-- 				["w"] = { "n", "x" },
+	-- 				["b"] = { "n", "x" },
+	-- 				["h"] = { "n", "x" },
+	-- 				["j"] = { "n", "x" },
+	-- 				["k"] = { "n", "x" },
+	-- 				["l"] = { "n", "x" },
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	event = "BufEnter",
+	-- },
 	{
 		"ggandor/leap.nvim",
 		lazy = false,

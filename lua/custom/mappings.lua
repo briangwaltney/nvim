@@ -1,21 +1,27 @@
 ---@type MappingsTable
 local M = {}
+-- {{{ Disabled Mappings
 
 M.disabled = {
 	n = {
-		-- Disable
 		["<leader>n"] = { "" },
 		["<tab>"] = { "" },
 		["<S-tab>"] = { "" },
 	},
 }
--- test
+
+-- ---------------------------------------------------------------------------------- }}}
 M.general = {
-	x = {
-		["Q"] = { ":norm @q<CR>", "run macro q across all selected lines" },
-	},
+	-- {{{ Normal Mappings
 	n = {
-		["<leader>t"] = { "<cmd> TroubleToggle<CR>", "trouble" },
+		["ma"] = { "zMzz", "close all folds and center" },
+		["mr"] = { "zR", "Open all folds" },
+		["mi"] = { "za", "toggle current fold" },
+		["mj"] = { "zcjzOzz", "close current fold when open. Always open next fold." },
+		["mk"] = { "zckzOzz", " close current fold when open. Always open previous fould." },
+
+		["<leader><leader>e"] = { "oif err != nil {<CR>}<Esc>Oreturn err <Esc>", "if err != nil" },
+		["<leader><leader>t"] = { "<cmd> TroubleToggle<CR>", "trouble" },
 		["Q"] = { "@qj", "run macro q" },
 		["<C-q>"] = {
 			function(bufnr)
@@ -25,10 +31,8 @@ M.general = {
 			"Send to quickfix",
 		},
 		["<leader>q"] = { "<cmd>q<CR>", "close buffer" },
-		["<leader><leader>s"] = { "<cmd>source ~/.config/nvim/lua/custom/snippets.lua<CR>" },
 		["<leader><leader>l"] = { "<cmd>LspRestart<CR>" },
 		["<leader>F"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
-
 		["<leader>dl"] = {
 			"<cmd> Telescope diagnostics <CR>",
 			"diagnostics list",
@@ -53,6 +57,7 @@ M.general = {
 		},
 
 		["<Esc>"] = { ":noh<CR>", "clear highlights" },
+		["<leader><leader>s"] = { ":w<CR>", "save" },
 		["<leader>s"] = { "<cmd>Neoformat<CR>:w<CR>", "save" },
 
 		["{"] = { "<C-u>zz", "half page up" },
@@ -85,6 +90,10 @@ M.general = {
 
 		["<leader>co"] = { "<cmd> Copilot open <CR>" },
 	},
+
+	-- ---------------------------------------------------------------------------------- }}}
+	-- {{{ Visual Mappings
+
 	v = {
 		["gc"] = {
 			"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
@@ -93,6 +102,9 @@ M.general = {
 		["<Tab>"] = { ">" },
 		["<S-Tab>"] = { "<" },
 	},
+
+	-- ---------------------------------------------------------------------------------- }}}
+	-- {{{ Insert Mappings
 
 	i = {
 		["<C-f>"] = {
@@ -135,7 +147,5 @@ M.general = {
 		},
 	},
 }
-
--- more keybinds!
-
+-- -------------------------------------------------------------------------------- }}}
 return M

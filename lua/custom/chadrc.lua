@@ -46,7 +46,7 @@ M.ui = {
 				-- grey_fg = "#565c68",
 				-- grey_fg2 = "#606672",
 				-- light_grey = "#646a76",
-				-- red = "#BF616A",
+				red = "#fca5a5",
 				-- baby_pink = "#de878f",
 				-- pink = "#d57780",
 				-- line = "#414753", -- for lines like vertsplit
@@ -65,6 +65,7 @@ M.ui = {
 				-- lightbg = "#3f4551",
 				-- pmenu_bg = "#A3BE8C",
 				-- folder_bg = "#7797b7",
+				base00 = "#252a34",
 			},
 		},
 	},

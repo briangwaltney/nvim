@@ -1,16 +1,30 @@
----@type ChadrcConfig
 local M = {}
 
 -- Path to overriding theme and highlights files
 local highlights = require("custom.highlights")
 
+local function cursorPosition()
+	return "%#StText#%l:%c "
+end
+
 M.ui = {
 	theme = "nord",
-	theme_toggle = { "nord", "one_light" },
 	statusline = {
 		theme = "vscode_colored",
+		overriden_modules = function(modules)
+			table.remove(modules, 13)
+			table.remove(modules, 11)
+			table.remove(modules, 10)
+			table.remove(modules, 9)
+			table.insert(modules, cursorPosition())
+		end,
 	},
-
+	tabufline = {
+		lazyload = false,
+		overriden_modules = function(modules)
+			table.remove(modules, 4)
+		end,
+	},
 	hl_override = highlights.override,
 	hl_add = highlights.add,
 	changed_themes = {

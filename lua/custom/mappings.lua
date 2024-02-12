@@ -1,17 +1,25 @@
----@type MappingsTable
-local M = {}
 -- {{{ Disabled Mappings
 
+---@type MappingsTable
+local M = {}
+
 M.disabled = {
+
+	-- ---------------------------------------------------------------------------------- }}}
+	-- {{{ Normal
+
 	n = {
 		["<leader>n"] = { "" },
 		["<tab>"] = { "" },
 		["<S-tab>"] = { "" },
 	},
 }
+-- -------------------------------------------------------------------------------- }}}
+-- {{{ Enabled Mappings
 
--- ---------------------------------------------------------------------------------- }}}
 M.general = {
+
+	-- -------------------------------------------------------------------------------- }}}
 	-- {{{ Normal Mappings
 	n = {
 		["ma"] = { "zMzz", "close all folds and center" },
@@ -20,9 +28,12 @@ M.general = {
 		["mj"] = { "zcjzOzz", "close current fold when open. Always open next fold." },
 		["mk"] = { "zckzOzz", " close current fold when open. Always open previous fould." },
 
+		["<leader><leader>j"] = { "<cmd>wincmd j<CR>", "move to pane below" },
+		["<leader><leader>k"] = { "<cmd>wincmd k<CR>", "move to pane above" },
+
 		["<leader><leader>e"] = { "oif err != nil {<CR>}<Esc>Oreturn err <Esc>", "if err != nil" },
 		["<leader><leader>t"] = { "<cmd> TroubleToggle<CR>", "trouble" },
-		["Q"] = { "@qj", "run macro q" },
+		["Q"] = { "@q", "run macro q" },
 		["<C-q>"] = {
 			function(bufnr)
 				require("telescope.actions").smart_send_to_qflist(bufnr)
@@ -47,13 +58,6 @@ M.general = {
 				vim.diagnostic.open_float({ border = "rounded" })
 			end,
 			"LSP hover",
-		},
-
-		["<c-Y>"] = {
-			function()
-				require("nvchad.tabufline").tabuflinePrev()
-			end,
-			"goto prev buffer",
 		},
 
 		["<Esc>"] = { ":noh<CR>", "clear highlights" },
@@ -135,17 +139,7 @@ M.general = {
 			end,
 			"Cycle autocomplete",
 		},
-
-		["<C-Y>"] = {
-			function()
-				local cmp = require("cmp")
-				if cmp.visible() then
-					cmp.select_prev_item()
-				end
-			end,
-			"Cycle autocomplete",
-		},
 	},
 }
--- -------------------------------------------------------------------------------- }}}
 return M
+-- -------------------------------------------------------------------------------- }}}

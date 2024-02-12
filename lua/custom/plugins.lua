@@ -16,11 +16,28 @@ local plugins = {
 			},
 		},
 	},
+	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = false },
 	{
-		"JoosepAlviste/nvim-ts-context-commentstring",
+		"anuvyklack/pretty-fold.nvim",
 		lazy = false,
+		config = function()
+			require("pretty-fold").setup({
+				fill_char = " ",
+				keep_indentation = true,
+				sections = {
+					left = {
+						"content",
+					},
+					right = {
+						"",
+						function(config)
+							return config.fill_char:rep(3)
+						end,
+					},
+				},
+			})
+		end,
 	},
-
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -38,10 +55,8 @@ local plugins = {
 		end, -- Override to setup mason-lspconfig
 	},
 	{ "nvim-treesitter/nvim-treesitter-context", lazy = false },
-
 	-- override plugin configs
 	{ "williamboman/mason.nvim", opts = overrides.mason },
-	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = false },
 	{ "numToStr/Comment.nvim" },
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -56,37 +71,7 @@ local plugins = {
 			require("better_escape").setup()
 		end,
 	},
-	-- {
-	-- 	"m4xshen/hardtime.nvim",
-	-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-	-- 	config = function()
-	-- 		require("hardtime").setup({
-	-- 			disable_mouse = false,
-	-- 			disabled_keys = {
-	-- 				["<Up>"] = {},
-	-- 				["<Down>"] = {},
-	-- 				["<Left>"] = {},
-	-- 				["<Right>"] = {},
-	-- 			},
-	-- 			restricted_keys = {
-	-- 				["w"] = { "n", "x" },
-	-- 				["b"] = { "n", "x" },
-	-- 				["h"] = { "n", "x" },
-	-- 				["j"] = { "n", "x" },
-	-- 				["k"] = { "n", "x" },
-	-- 				["l"] = { "n", "x" },
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- 	event = "BufEnter",
-	-- },
-	{
-		"ggandor/leap.nvim",
-		lazy = false,
-		config = function()
-			require("leap").add_default_mappings()
-		end,
-	},
+	{ "imsnif/kdl.vim", ft = "kdl" },
 	{ "github/copilot.vim", lazy = false },
 	{
 		"hrsh7th/nvim-cmp",

@@ -16,7 +16,6 @@ local plugins = {
 			},
 		},
 	},
-	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = false },
 	{
 		"anuvyklack/pretty-fold.nvim",
 		lazy = false,
@@ -55,13 +54,10 @@ local plugins = {
 		end, -- Override to setup mason-lspconfig
 	},
 	{ "nvim-treesitter/nvim-treesitter-context", lazy = false },
-	-- override plugin configs
 	{ "williamboman/mason.nvim", opts = overrides.mason },
-	{ "numToStr/Comment.nvim" },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = overrides.treesitter,
-		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 	},
 	{ "nvim-tree/nvim-tree.lua", opts = overrides.nvimtree },
 	{

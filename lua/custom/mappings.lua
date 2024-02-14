@@ -22,6 +22,12 @@ M.general = {
 	-- -------------------------------------------------------------------------------- }}}
 	-- {{{ Normal Mappings
 	n = {
+
+		["<leader>fn"] = {
+			"^<cmd>lua require('Comment.api').toggle.linewise.current()<cr>0ea {{{<esc>A<cr><cr><cr><cr>-------------------------------------------------------------------------- }}}<esc><cmd>lua require('Comment.api').toggle.linewise.current()<cr>kka",
+			"Create a new fold with this line as the title",
+		},
+
 		["ma"] = { "zMzz", "close all folds and center" },
 		["mr"] = { "zR", "Open all folds" },
 		["mi"] = { "za", "toggle current fold" },
@@ -69,12 +75,6 @@ M.general = {
 		["U"] = { "<C-r>", "undo" },
 		["n"] = { "nzzzv", "find next and center" },
 		["N"] = { "Nzzzv", "find next and center" },
-		["gc"] = {
-			function()
-				require("Comment.api").toggle.linewise.current()
-			end,
-			"toggle comment",
-		},
 
 		["L"] = {
 			function()
@@ -100,13 +100,19 @@ M.general = {
 
 	v = {
 		["gc"] = {
-			"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+			function()
+				require("Comment.api").toggle.linewise.current()
+			end,
 			"toggle comment",
+			{ silent = true, noremap = true },
 		},
 		["<Tab>"] = { ">" },
 		["<S-Tab>"] = { "<" },
+		["<leader>fs"] = {
+			"c-------------------------------------------------------------------------- }}}<esc>:lua require('Comment.api').toggle.linewise.current()<cr>O<esc>O<esc>pO<esc>O{{{<esc>:lua require('Comment.api').toggle.linewise.current()<cr>A ",
+			"Create fold around selected text",
+		},
 	},
-
 	-- ---------------------------------------------------------------------------------- }}}
 	-- {{{ Insert Mappings
 

@@ -192,7 +192,12 @@ local default_plugins = {
 			require("cmp").setup(opts)
 		end,
 	},
-
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		opts = {
+			enable_autocmd = false,
+		},
+	},
 	{
 		"numToStr/Comment.nvim",
 		keys = {
@@ -209,6 +214,7 @@ local default_plugins = {
 		config = function(_, opts)
 			require("Comment").setup(opts)
 		end,
+		-- pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 	},
 
 	-- file managing , picker etc
